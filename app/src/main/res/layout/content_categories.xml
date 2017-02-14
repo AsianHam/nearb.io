@@ -19,63 +19,81 @@
             android:layout_height="wrap_content"
             android:text="Airports"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="0dp"/>
+            android:layout_marginTop="0dp"
+            android:onClick="nearbyAirport"
+            android:id="@+id/airports"/>
 
         <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Bars"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:onClick="nearbyBar"
+            android:id="@+id/bars"/>
 
         <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Cafe"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:onClick="nearbyCafe"
+            android:id="@+id/cafe"/>
 
         <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Earlham College"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:onClick="nearbyEarlham"
+            android:id="@+id/earlham"/>
 
         <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Entertainment"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:onClick="nearbyEntertainment"
+            android:id="@+id/entertainment"/>
 
         <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Hair Salons"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:onClick="nearbyHair"
+            android:id="@+id/hair"/>
 
         <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Parks"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:onClick="nearbyPark"
+            android:id="@+id/parks"/>
 
         <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Restaurants"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:onClick="nearbyRestaurant"
+            android:id="@+id/restaurants"/>
 
         <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Shopping"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:onClick="nearbyShopping"
+            android:id="@+id/shopping"/>
 
         <Button
             android:layout_width="200dp"
@@ -83,7 +101,9 @@
             android:text="Supermarkets"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:onClick="nearbySupermarket"
+            android:id="@+id/supermarkets"/>
 
     </LinearLayout>
 

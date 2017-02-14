@@ -13,17 +13,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!--
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Events"
-            android:textSize="25dp"/>
-        -->
-
         <Button
             android:id="@+id/map_button"
-            android:layout_width="150dp"
+            android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:text="Map"
             android:layout_gravity="center"
@@ -32,11 +24,11 @@
 
         <Button
             android:id="@+id/category_button"
-            android:layout_width="150dp"
+            android:layout_width="175dp"
             android:layout_height="wrap_content"
-            android:text="Categories"
+            android:text="What's Nearby?"
             android:layout_gravity="center_horizontal"
-            android:onClick="categoryView"
+            android:onClick="nearbyView"
             android:layout_marginTop="20dp"/>
     </LinearLayout>
 

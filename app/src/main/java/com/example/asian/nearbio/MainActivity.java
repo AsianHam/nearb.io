@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void categoryView(View view) {
-        Intent i = new Intent(MainActivity.this, CategoriesActivity.class);
+    public void nearbyView(View view) {
+        Intent i = new Intent(MainActivity.this, NearbyActivity.class);
         startActivity(i);
     }
 }

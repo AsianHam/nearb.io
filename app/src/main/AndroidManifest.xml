@@ -48,7 +48,13 @@
         <activity
             android:name=".CategoriesActivity"
             android:label="Categories"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".NearbyActivity"
+            android:label="@string/title_activity_nearby"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
