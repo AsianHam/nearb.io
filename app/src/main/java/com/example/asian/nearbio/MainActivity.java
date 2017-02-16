@@ -28,4 +28,9 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(MainActivity.this, NearbyActivity.class);
         startActivity(i);
     }
+
+    public void infoView(View view) {
+        Intent i = new Intent(MainActivity.this, InfoActivity.class);
+        startActivity(i);
+    }
 }

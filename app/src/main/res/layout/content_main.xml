@@ -30,6 +30,16 @@
             android:layout_gravity="center_horizontal"
             android:onClick="nearbyView"
             android:layout_marginTop="20dp"/>
+
+        <Button
+            android:id="@+id/category_button"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="Info"
+            android:layout_gravity="center_horizontal"
+            android:onClick="infoView"
+            android:layout_marginTop="20dp"/>
+
     </LinearLayout>
 
 
