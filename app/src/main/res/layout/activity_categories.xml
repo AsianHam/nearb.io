@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay"
-        android:background="#861F41">
+        android:background="#6F263D">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -23,7 +23,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
             android:titleTextColor="#FFFFFF"
             android:title="Categories"
-            android:background="#861F41"
+            android:background="#6F263D"
             android:layout_marginTop="20dp"/>
 
     </android.support.design.widget.AppBarLayout>
