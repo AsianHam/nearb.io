@@ -52,12 +52,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".NearbyActivity"
-            android:label="@string/title_activity_nearby"
+            android:label="Nearby"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".InfoActivity"
-            android:label="@string/title_activity_info"
+            android:label="Info"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
