@@ -22,6 +22,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import static android.app.Activity.RESULT_OK;
+
 public class NearbyActivity extends AppCompatActivity {
 
     @Override
