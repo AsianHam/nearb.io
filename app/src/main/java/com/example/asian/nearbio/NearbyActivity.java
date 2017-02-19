@@ -19,7 +19,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import com.example.asian.nearbio.CSVFile;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import org.w3c.dom.Text;
 
 import static android.app.Activity.RESULT_OK;
@@ -65,8 +72,16 @@ public class NearbyActivity extends AppCompatActivity {
     }
 
     public void mapView(View view) {
-        Intent i = new Intent(NearbyActivity.this, MapsActivity.class);
-        startActivity(i);
+        Intent listStore = new Intent(NearbyActivity.this, MapsActivity.class);
+        startActivity(listStore);
+//        InputStream inputStream = getResources().openRawResource(R.raw.processed_airports);
+//        CSVFile csvFile = new CSVFile(inputStream);
+ //       List scoreList = csvFile.read();
+//        Bundle bundle = new Bundle();
+//        bundle.putParcelableArray("PlacesList", scoreList);
+//        listStore.putExtra("data",(Serializable) scoreList);
+        listStore.putExtra("hello", "hello");
+        setResult(CategoriesActivity.RESULT_OK, listStore);
         finish();
     }
 
