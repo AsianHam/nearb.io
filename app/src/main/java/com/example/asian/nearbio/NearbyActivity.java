@@ -74,7 +74,7 @@ public class NearbyActivity extends AppCompatActivity {
 
     public void mapView(View view) {
         Intent listStore = new Intent(NearbyActivity.this, MapsActivity.class);
-        listStore.putExtra("hello", "hello");
+        listStore.putExtra("distance","data");
         startActivity(listStore);
         finish();
     }
