@@ -37,33 +37,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        double startLat = EarlLat;
-        double startLon = EarlLon;
-
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            InputStream inputStream = getResources().openRawResource(R.raw.processed_airports);
-            CSVFile csvFile = new CSVFile(inputStream);
-            List PlacesList = csvFile.read();
-            for (int i = 0; i < PlacesList.size(); i++) {
-                String[] Place = (String[]) PlacesList.get(i);
-                double currentLat = Double.parseDouble(Place[4]);
-                double currentLon = Double.parseDouble(Place[5]);
-                String thisName = Place[0];
-
-                float distance = distanceCalc(startLat,startLon,currentLat,currentLon);
-
-                if (distance < 60) {
-                    AllNames.add(thisName);
-                    AllPoints.add(new LatLng(currentLat, currentLon));
-                }
-            }
-        }
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        mapCreator();
         mMap = googleMap;
 
         for (int i = 0; i < AllPoints.size(); i++) {
@@ -89,6 +67,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onBackPressed() {
         super.onBackPressed();
         this.finish();
+    }
+
+    private void mapCreator(){
+        double startLat = EarlLat;
+        double startLon = EarlLon;
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            InputStream inputStream = getResources().openRawResource(R.raw.processed_airports);
+            CSVFile csvFile = new CSVFile(inputStream);
+            List PlacesList = csvFile.read();
+            for (int i = 0; i < PlacesList.size(); i++) {
+                String[] Place = (String[]) PlacesList.get(i);
+                double currentLat = Double.parseDouble(Place[4]);
+                double currentLon = Double.parseDouble(Place[5]);
+                String thisName = Place[0];
+
+                float distance = distanceCalc(startLat,startLon,currentLat,currentLon);
+
+                if (distance < 150) {
+                    AllNames.add(thisName);
+                    AllPoints.add(new LatLng(currentLat, currentLon));
+                }
+            }
+        }
     }
 
     private float distanceCalc(double startLat, double startLon, double endLat, double endLon){
