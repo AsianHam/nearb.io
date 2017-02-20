@@ -50,7 +50,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Abraham Oh (ahoh14@earlham.edu)"
+            android:text=" Abraham Oh (aboh14@earlham.edu)"
             android:layout_gravity="start"
             android:textColor="#000000"
             android:textSize="14sp"

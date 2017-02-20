@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -27,6 +26,8 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import org.w3c.dom.Text;
+
 import org.w3c.dom.Text;
 
 import static android.app.Activity.RESULT_OK;
@@ -73,15 +74,8 @@ public class NearbyActivity extends AppCompatActivity {
 
     public void mapView(View view) {
         Intent listStore = new Intent(NearbyActivity.this, MapsActivity.class);
-        startActivity(listStore);
-//        InputStream inputStream = getResources().openRawResource(R.raw.processed_airports);
-//        CSVFile csvFile = new CSVFile(inputStream);
- //       List scoreList = csvFile.read();
-//        Bundle bundle = new Bundle();
-//        bundle.putParcelableArray("PlacesList", scoreList);
-//        listStore.putExtra("data",(Serializable) scoreList);
         listStore.putExtra("hello", "hello");
-        setResult(CategoriesActivity.RESULT_OK, listStore);
+        startActivity(listStore);
         finish();
     }
 
