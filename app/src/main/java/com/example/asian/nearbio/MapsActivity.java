@@ -74,6 +74,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         double startLon = EarlLon;
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
+            int radialDist = bundle.getInt("distance");
             InputStream inputStream = getResources().openRawResource(R.raw.processed_airports);
             CSVFile csvFile = new CSVFile(inputStream);
             List PlacesList = csvFile.read();
@@ -85,7 +86,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 float distance = distanceCalc(startLat,startLon,currentLat,currentLon);
 
-                if (distance < 150) {
+                if (distance < radialDist) {
                     AllNames.add(thisName);
                     AllPoints.add(new LatLng(currentLat, currentLon));
                 }
@@ -96,7 +97,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private float distanceCalc(double startLat, double startLon, double endLat, double endLon){
         float[] result = new float[1];
         Location.distanceBetween(startLat,startLon,endLat,endLon,result);
-        float distanceInMiles = result[0] * 0.000621371192f;
-        return distanceInMiles;
+        return result[0] * 0.000621371192f;
     }
 }

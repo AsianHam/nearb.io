@@ -28,7 +28,7 @@
         android:layout_alignParentRight="true"
         android:hint="miles"
         android:maxLines="1"
-        android:maxLength="2"
+        android:maxLength="3"
         android:inputType="number"/>
 
     <LinearLayout

@@ -73,8 +73,10 @@ public class NearbyActivity extends AppCompatActivity {
     }
 
     public void mapView(View view) {
+        EditText mEdit = (EditText) findViewById(R.id.radiusEdit);
         Intent listStore = new Intent(NearbyActivity.this, MapsActivity.class);
-        listStore.putExtra("distance","data");
+        int distance = Integer.valueOf(mEdit.getText().toString());
+        listStore.putExtra("distance",distance);
         startActivity(listStore);
         finish();
     }
