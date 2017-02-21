@@ -7,10 +7,13 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -25,11 +28,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private LatLngBounds theHeart = new LatLngBounds(
             new LatLng(39.822281, -84.914987), new LatLng(39.824926, -84.911393));
+<<<<<<< Updated upstream
     List<LatLng> AllPoints = new ArrayList<LatLng>();
     List<String> AllNames = new ArrayList<String>();
     double EarlLat = 39.8238;
     double EarlLon = -84.9132;
     private static final int MY_PERMISSION_ACCESS_FINE_LOCATION = 12;
+=======
+>>>>>>> Stashed changes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return;
         }
         mMap.setMyLocationEnabled(true);
+<<<<<<< Updated upstream
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(theHeart.getCenter(), 17));
     }
 
@@ -106,5 +113,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         float[] result = new float[1];
         Location.distanceBetween(startLat,startLon,endLat,endLon,result);
         return result[0] * 0.000621371192f;
+=======
+        // Add a marker in Sydney and move the camera
+        //LatLng sydney = new LatLng(-34, 151);
+        //LatLng theHeart = new LatLng(39.823230, -84.913315);
+        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        //mMap.addMarker(new MarkerOptions().position(theHeart).title("The Heart"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(theHeart.getCenter(), 17));
+>>>>>>> Stashed changes
     }
 }
