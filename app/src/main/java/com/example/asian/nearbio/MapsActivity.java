@@ -11,6 +11,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -19,6 +20,7 @@ import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -32,9 +34,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     double EarlLat = 39.8238;
     double EarlLon = -84.9132;
     private static final int MY_PERMISSION_ACCESS_FINE_LOCATION = 12;
-/*    List<String> allCategories = Arrays.asList("\"airport\"", "\"bar\"", "\"cafe\"", "\"earlham college\"", "\"entertainment\"",
-            "\"hair salon\"", "\"park\"", "\"restaurant\"", "\"shopping\"", "\"supermarket\"");
-    List allColors = Arrays.asList(341);   */
+    List<String> allCategories = Arrays.asList("Airport", "Bar", "Cafe", "Earlham college", "Entertainment",
+            "Hair salon", "Park", "Restaurant", "Shopping", "Supermarket");
+    List<Float> allColors = Arrays.asList(197f,353f,25f,341f,30f,45f,120f,15f,274f,51f);
+
+    HashMap hMapColor = new HashMap();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        for (int i = 0; i <allCategories.size(); i++){
+            hMapColor.put(allCategories.get(i),allColors.get(i));
+        }
     }
 
     @Override
@@ -54,11 +61,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng pos = AllPoints.get(i);
             String thisName = AllNames.get(i);
             String thisCategory = AllCategories.get(i);
+            Log.d("checking category",thisCategory);
+            Log.d("Checking hMap", hMapColor.get(thisCategory).toString());
 //            thisCategory = thisCategory.substring(1,thisCategory.length()-1).;
             mMap.addMarker(new MarkerOptions()
                     .position(pos)
                     .title(thisCategory)
-                    .snippet(thisName));
+                    .snippet(thisName))
+                    .setIcon(BitmapDescriptorFactory.defaultMarker(Float.valueOf(hMapColor.get(thisCategory).toString())));
         }
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
