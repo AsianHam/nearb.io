@@ -25,6 +25,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.w3c.dom.Text;
 
@@ -33,6 +34,10 @@ import org.w3c.dom.Text;
 import static android.app.Activity.RESULT_OK;
 
 public class NearbyActivity extends AppCompatActivity {
+
+    List<String> whichType = new ArrayList();
+    List<String> allCategories = Arrays.asList("\"airport\"", "\"bar\"", "\"cafe\"", "\"earlham college\"", "\"entertainment\"",
+            "\"hair salon\"", "\"park\"", "\"restaurant\"", "\"shopping\"", "\"supermarket\"");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,15 @@ public class NearbyActivity extends AppCompatActivity {
         if (requestCode == 1 && data != null) {
             if(resultCode == RESULT_OK) {
                 String category = data.getExtras().getString("category");
+                int lastIndex = category.length()-1;
+                String sendStr;
+                if (category.endsWith("s")){
+                    sendStr = category.substring(0, lastIndex);
+                }else{
+                    sendStr = category;
+                }
+                sendStr = '"' + sendStr.toLowerCase() + '"';
+                whichType.add(sendStr);
                 TextView categoryList = new TextView(this);
                 categoryList.setText(category);
                 categoryList.setTextSize(20);
@@ -75,8 +89,18 @@ public class NearbyActivity extends AppCompatActivity {
     public void mapView(View view) {
         EditText mEdit = (EditText) findViewById(R.id.radiusEdit);
         Intent listStore = new Intent(NearbyActivity.this, MapsActivity.class);
-        int distance = Integer.valueOf(mEdit.getText().toString());
+        if (whichType.isEmpty()) {
+            whichType = allCategories;
+        }
+        int distance;
+        String mText = (mEdit.getText().toString()).trim();
+        try {
+            distance = Integer.valueOf(mText);
+        }catch{
+            distance = 0;
+        }
         listStore.putExtra("distance",distance);
+        listStore.putStringArrayListExtra("categories", (ArrayList<String>)whichType);
         startActivity(listStore);
         finish();
     }

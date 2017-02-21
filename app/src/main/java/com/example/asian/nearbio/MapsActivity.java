@@ -5,6 +5,7 @@ import android.location.Location;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -15,6 +16,7 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +25,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private LatLngBounds theHeart = new LatLngBounds(
             new LatLng(39.822281, -84.914987), new LatLng(39.824926, -84.911393));
-    List<LatLng> AllPoints = new ArrayList();
-    List<String> AllNames = new ArrayList();
+    List<LatLng> AllPoints = new ArrayList<LatLng>();
+    List<String> AllNames = new ArrayList<String>();
     double EarlLat = 39.8238;
     double EarlLon = -84.9132;
 //    private static final int MY_PERMISSION_ACCESS_COARSE_LOCATION = 11;
@@ -75,20 +77,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             int radialDist = bundle.getInt("distance");
+            List<String> categories = bundle.getStringArrayList("categories");
             InputStream inputStream = getResources().openRawResource(R.raw.processed_airports);
             CSVFile csvFile = new CSVFile(inputStream);
             List PlacesList = csvFile.read();
+
             for (int i = 0; i < PlacesList.size(); i++) {
                 String[] Place = (String[]) PlacesList.get(i);
                 double currentLat = Double.parseDouble(Place[4]);
                 double currentLon = Double.parseDouble(Place[5]);
                 String thisName = Place[0];
+                String thisCategory = Place[7];
 
-                float distance = distanceCalc(startLat,startLon,currentLat,currentLon);
+                if (categories.contains(thisCategory)){
 
-                if (distance < radialDist) {
-                    AllNames.add(thisName);
-                    AllPoints.add(new LatLng(currentLat, currentLon));
+                    float distance = distanceCalc(startLat,startLon,currentLat,currentLon);
+
+                    if (distance < radialDist) {
+                        AllNames.add(thisName);
+                        AllPoints.add(new LatLng(currentLat, currentLon));
+//                        Log.d("Checking type", thisCategory);    //For debugging
+                    }
                 }
             }
         }
