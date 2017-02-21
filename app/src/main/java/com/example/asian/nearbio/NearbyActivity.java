@@ -18,6 +18,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.asian.nearbio.CSVFile;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -100,13 +102,26 @@ public class NearbyActivity extends AppCompatActivity {
             distance = 10;
         }
         listStore.putExtra("distance",distance);
-        try {
+        if (whichType.isEmpty()){
+            Context context = getApplicationContext();
+            CharSequence text = "You didn't select any categories. Press the + button on bottom right to add categories.";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }else{
             listStore.putStringArrayListExtra("categories", (ArrayList<String>) whichType);
-        }catch(Exception e){
-            listStore.putStringArrayListExtra("categories", (ArrayList<String>) allCategories);
+            startActivity(listStore);
+            finish();
         }
-        startActivity(listStore);
-        finish();
+
+/*        try {
+
+        }catch(Exception e){
+//            listStore.putStringArrayListExtra("categories", (ArrayList<String>) allCategories);
+
+        }*/
+
     }
 
     @Override
