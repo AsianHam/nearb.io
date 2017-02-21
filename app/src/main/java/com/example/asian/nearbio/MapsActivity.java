@@ -29,7 +29,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     List<String> AllNames = new ArrayList<String>();
     double EarlLat = 39.8238;
     double EarlLon = -84.9132;
-//    private static final int MY_PERMISSION_ACCESS_COARSE_LOCATION = 11;
     private static final int MY_PERMISSION_ACCESS_FINE_LOCATION = 12;
 
     @Override

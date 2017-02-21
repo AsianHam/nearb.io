@@ -12,7 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/layoutNearby">
 
         <Button
             android:layout_width="200dp"
@@ -39,7 +40,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:onClick="nearbyCafe"
-            android:id="@+id/cafe"/>
+            android:id="@+id/cafes"/>
 
         <Button
             android:layout_width="200dp"

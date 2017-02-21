@@ -53,6 +53,7 @@ public class NearbyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(NearbyActivity.this, CategoriesActivity.class);
+                i.putStringArrayListExtra("categories", (ArrayList<String>)whichType);
                 startActivityForResult(i, 1);
             }
         });
@@ -64,17 +65,15 @@ public class NearbyActivity extends AppCompatActivity {
         if (requestCode == 1 && data != null) {
             if(resultCode == RESULT_OK) {
                 String category = data.getExtras().getString("category");
-                if (category != null) {
-                    int lastIndex = category.length() - 1;
-                    String sendStr;
-                    if (category.endsWith("s")) {
-                        sendStr = category.substring(0, lastIndex);
-                    } else {
-                        sendStr = category;
-                    }
-                    sendStr = '"' + sendStr.toLowerCase() + '"';
-                    whichType.add(sendStr);
+                int lastIndex = category.length()-1;
+                String sendStr;
+                if (category.endsWith("s")){
+                    sendStr = category.substring(0, lastIndex);
+                }else{
+                    sendStr = category;
                 }
+                sendStr = '"' + sendStr.toLowerCase() + '"';
+                whichType.add(sendStr);
                 TextView categoryList = new TextView(this);
                 categoryList.setText(category);
                 categoryList.setTextSize(20);
@@ -114,13 +113,6 @@ public class NearbyActivity extends AppCompatActivity {
             startActivity(listStore);
             finish();
         }
-
-/*        try {
-
-        }catch(Exception e){
-//            listStore.putStringArrayListExtra("categories", (ArrayList<String>) allCategories);
-
-        }*/
 
     }
 
