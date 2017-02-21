@@ -18,6 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -27,9 +28,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             new LatLng(39.822281, -84.914987), new LatLng(39.824926, -84.911393));
     List<LatLng> AllPoints = new ArrayList<LatLng>();
     List<String> AllNames = new ArrayList<String>();
+    List<String> AllCategories = new ArrayList<String>();
     double EarlLat = 39.8238;
     double EarlLon = -84.9132;
     private static final int MY_PERMISSION_ACCESS_FINE_LOCATION = 12;
+/*    List<String> allCategories = Arrays.asList("\"airport\"", "\"bar\"", "\"cafe\"", "\"earlham college\"", "\"entertainment\"",
+            "\"hair salon\"", "\"park\"", "\"restaurant\"", "\"shopping\"", "\"supermarket\"");
+    List allColors = Arrays.asList(341);   */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +53,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for (int i = 0; i < AllPoints.size(); i++) {
             LatLng pos = AllPoints.get(i);
             String thisName = AllNames.get(i);
-            mMap.addMarker(new MarkerOptions().position(pos).title(thisName));
+            String thisCategory = AllCategories.get(i);
+//            thisCategory = thisCategory.substring(1,thisCategory.length()-1).;
+            mMap.addMarker(new MarkerOptions()
+                    .position(pos)
+                    .title(thisCategory)
+                    .snippet(thisName));
         }
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -93,6 +103,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     float distance = distanceCalc(startLat,startLon,currentLat,currentLon);
 
                     if (distance < radialDist) {
+                        thisCategory = thisCategory.substring(1,2).toUpperCase() + thisCategory.substring(2,thisCategory.length()-1);
+                        AllCategories.add(thisCategory);
                         AllNames.add(thisName);
                         AllPoints.add(new LatLng(currentLat, currentLon));
 //                        Log.d("Checking type", thisCategory);    //For debugging

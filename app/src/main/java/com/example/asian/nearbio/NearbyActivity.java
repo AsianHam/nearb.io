@@ -27,7 +27,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.w3c.dom.Text;
 
@@ -38,8 +37,6 @@ import static android.app.Activity.RESULT_OK;
 public class NearbyActivity extends AppCompatActivity {
 
     List<String> whichType = new ArrayList();
-    List<String> allCategories = Arrays.asList("\"airport\"", "\"bar\"", "\"cafe\"", "\"earlham college\"", "\"entertainment\"",
-            "\"hair salon\"", "\"park\"", "\"restaurant\"", "\"shopping\"", "\"supermarket\"");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
