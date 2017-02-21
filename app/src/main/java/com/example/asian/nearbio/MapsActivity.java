@@ -29,11 +29,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LatLngBounds theHeart = new LatLngBounds(
             new LatLng(39.822281, -84.914987), new LatLng(39.824926, -84.911393));
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     List<LatLng> AllPoints = new ArrayList<LatLng>();
     List<String> AllNames = new ArrayList<String>();
     double EarlLat = 39.8238;
     double EarlLon = -84.9132;
     private static final int MY_PERMISSION_ACCESS_FINE_LOCATION = 12;
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -120,6 +123,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         //mMap.addMarker(new MarkerOptions().position(theHeart).title("The Heart"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(theHeart.getCenter(), 17));
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
 }
