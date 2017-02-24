@@ -6,8 +6,9 @@ android {
 
     defaultConfig {
         applicationId "com.example.asian.nearbio"
-        minSdkVersion 22
+        minSdkVersion 21
         targetSdkVersion 24
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
     }

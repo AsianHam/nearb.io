@@ -17,7 +17,6 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -50,6 +49,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for (int i = 0; i <allCategories.size(); i++){
             hMapColor.put(allCategories.get(i),allColors.get(i));
         }
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[] { android.Manifest.permission.ACCESS_FINE_LOCATION },
+                    MY_PERMISSION_ACCESS_FINE_LOCATION);
+            return;
+        }
     }
 
     @Override
@@ -63,7 +69,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             String thisCategory = AllCategories.get(i);
             Log.d("checking category",thisCategory);
             Log.d("Checking hMap", hMapColor.get(thisCategory).toString());
-//            thisCategory = thisCategory.substring(1,thisCategory.length()-1).;
             mMap.addMarker(new MarkerOptions()
                     .position(pos)
                     .title(thisCategory)
@@ -71,15 +76,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     .setIcon(BitmapDescriptorFactory.defaultMarker(Float.valueOf(hMapColor.get(thisCategory).toString())));
         }
 
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-        /*    ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
-                    MY_PERMISSION_ACCESS_COARSE_LOCATION);   */
-            ActivityCompat.requestPermissions(this,
-                    new String[] { android.Manifest.permission.ACCESS_FINE_LOCATION },
-                    MY_PERMISSION_ACCESS_FINE_LOCATION);
-            return;
-        }
         mMap.setMyLocationEnabled(true);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(theHeart.getCenter(), 17));
     }
@@ -117,7 +113,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         AllCategories.add(thisCategory);
                         AllNames.add(thisName);
                         AllPoints.add(new LatLng(currentLat, currentLon));
-//                        Log.d("Checking type", thisCategory);    //For debugging
                     }
                 }
             }
